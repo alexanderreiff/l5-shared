@@ -1,6 +1,7 @@
 {
-  "name": "alexanderreiff/shared",
+  "name": "alexndr/shared",
   "type": "library",
+  "version": "0.1.0",
   "description": "Libraries for API controllers, model presenters and CDN URL generators for use across web properties",
   "keywords": [
     "api",
@@ -10,7 +11,7 @@
     "presenter",
     "decorator"
   ],
-  "homepage": "https://bitbucket.org/alexanderreiff/shared",
+  "homepage": "https://github.com/alexanderreiff/l5-shared",
   "authors": [
     {
       "name": "Alexander Reiff",
