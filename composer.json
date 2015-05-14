@@ -1,0 +1,55 @@
+{
+  "name": "alexanderreiff/shared",
+  "type": "library",
+  "description": "Libraries for API controllers, model presenters and CDN URL generators for use across web properties",
+  "keywords": [
+    "api",
+    "edgecast",
+    "cloudfront",
+    "cdn",
+    "presenter",
+    "decorator"
+  ],
+  "homepage": "https://bitbucket.org/alexanderreiff/shared",
+  "authors": [
+    {
+      "name": "Alexander Reiff",
+      "email": "alexander.reiff@me.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "~5.0",
+    "illuminate/http": "~5.0",
+    "illuminate/contracts": "~5.0",
+    "illuminate/routing": "~5.0",
+    "illuminate/database": "~5.0",
+    "illuminate/pagination": "~5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Alexndr\\Shared\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Alexndr\\Shared\\Tests\\": "tests"
+    }
+  },
+  "bin": [
+    "src/Cdn/bin/ec_encrypt",
+    "src/Cdn/bin/ec_encrypt64"
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-develop": "dev"
+    }
+  },
+  "suggest": {
+    "libssl0.9.8": "libssl v0.9.8 is required to be installed on the system to generate EdgeCast CDN tokens"
+  }
+}
