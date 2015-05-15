@@ -12,11 +12,13 @@ class CloudFrontServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-  	$path = realpath(__DIR__.'/../config/cloudfront.php');
-  	
-  	$this->publishes([
-     $path => config_path('cloudfront.php'),
-    ]);
+  	if (function_exists('config_path')) {
+    	$path = realpath(__DIR__.'/../config/cloudfront.php');
+    	
+    	$this->publishes([
+       $path => config_path('cloudfront.php'),
+      ]);
+    }
     
 		Url::setDefaults($this->app['config']['cloudfront']);
 	}

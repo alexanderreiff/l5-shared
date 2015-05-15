@@ -10,9 +10,11 @@ class ServiceProvider extends BaseServiceProvider
   
   public function boot()
   {
-    $this->publishes([
-     $this->configPath => config_path('presenters.php'),
-    ]);
+    if (function_exists('config_path')) {
+      $this->publishes([
+       $this->configPath => config_path('presenters.php'),
+      ]);
+    }
   }
   
   public function register()

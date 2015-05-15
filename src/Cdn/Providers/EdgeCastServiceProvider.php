@@ -12,11 +12,13 @@ class EdgeCastServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-  	$path = realpath(__DIR__.'/../config/edgecast.php');
-  	
-  	$this->publishes([
-     $path => config_path('edgecast.php'),
-    ]);
+  	if (function_exists('config_path')) {
+    	$path = realpath(__DIR__.'/../config/edgecast.php');
+    	
+    	$this->publishes([
+       $path => config_path('edgecast.php'),
+      ]);
+    }
     
 		Url::setDefaults($this->app['config']['edgecast']);
 	}
