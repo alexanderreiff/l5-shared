@@ -85,7 +85,9 @@ abstract class Presenter implements ArrayAccess
       }, ARRAY_FILTER_USE_KEY);
     }
     
-    foreach (array_keys($arr) as $key) {
+    $keys = ! empty($this->visible) ? $this->visible : array_keys($arr);
+    
+    foreach ($keys as $key) {
       try {
         $arr[$key] = $this->present($key);
       } catch (FieldNotPresentedException $e) { }
