@@ -109,7 +109,11 @@ abstract class Presenter implements ArrayAccess
   protected function present($field)
   {
     if (method_exists($this, $cc_key = camel_case($field))) {
-      return $this->{$cc_key}();
+      $presented = $this->{$cc_key}();
+      
+      return $this->hasSecondaryPresenter($presented) 
+              ? $this->decorate($presented) 
+              : $presented;
     }
     
     throw new FieldNotPresentedException($field);
@@ -125,5 +129,15 @@ abstract class Presenter implements ArrayAccess
     {
       return array_only($record, ['id', 'name']);
     }, $records);
+  }
+  
+  protected function hasSecondaryPresenter($presented)
+  {
+    return is_array($presented) && count($presented) == 2 && $presented[1] instanceof Presenter;
+  }
+  
+  protected function decorate($presented)
+  {
+    return app(Decorator::class)->decorate(...$presented);
   }
 }
