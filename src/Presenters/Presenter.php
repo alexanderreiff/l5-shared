@@ -138,6 +138,6 @@ abstract class Presenter implements ArrayAccess
   
   protected function decorate($presented, Presenter $presenter)
   {
-    return app(Decorator::class)->decorate($presented, $presented);
+    return app(Decorator::class)->decorate($presented, $presenter);
   }
 }
