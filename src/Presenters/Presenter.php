@@ -112,7 +112,7 @@ abstract class Presenter implements ArrayAccess
       $presented = $this->{$cc_key}();
       
       return $this->hasSecondaryPresenter($presented) 
-              ? $this->decorate($presented) 
+              ? $this->decorate(...$presented) 
               : $presented;
     }
     
@@ -136,8 +136,8 @@ abstract class Presenter implements ArrayAccess
     return is_array($presented) && count($presented) == 2 && $presented[1] instanceof Presenter;
   }
   
-  protected function decorate($presented)
+  protected function decorate($presented, Presenter $presenter)
   {
-    return app(Decorator::class)->decorate(...$presented);
+    return app(Decorator::class)->decorate($presented, $presented);
   }
 }
