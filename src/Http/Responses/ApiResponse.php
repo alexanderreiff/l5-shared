@@ -7,7 +7,7 @@ use Illuminate\Http\JsonResponse as Response;
 
 class ApiResponse extends Response implements Arrayable, Jsonable
 {  
-  protected $wrapPayload = true;
+  protected $wrapPayload = false;
   protected $success = false;
   protected $payload = [];
   protected $errorCode;
@@ -153,7 +153,12 @@ class ApiResponse extends Response implements Arrayable, Jsonable
   
   public function unwrap()
   {
-    $this->wrapPayload = false;
+    return $this->wrap(false);
+  }
+  
+  public function wrap($wrap = true)
+  {
+    $this->wrapPayload = $wrap;
     $this->updateData();
     return $this;
   }
